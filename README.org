@@ -1,5 +1,3 @@
-MEUH
-
 * Download
 
   #+begin_src sh
@@ -45,25 +43,15 @@ MEUH
 The =master= branch will only build the =balance= sub-project, which
 implements PGA-based character control.
 
+You need to declare the =MEUH_PATH= environment variable to be the
+root of the repository, and add =$MEUH_PATH/lib= to =LD_LIBRARY_PATH=,
+/e.g./ by putting this in =~/.bashrc=:
+
+: export MEUH_PATH=/the/path/to/meuh
+: export LD_LIBRARY_PATH=$MEUH_PATH/lib:$LD_LIBRARY_PATH
+
 Use mouse to control camera, shit+mouse to interact with the virtual
 character, press =r= to reset simulation.
 
-** Environment variables
-
-*** TODO does this still work ?
-   The relevant environment variables can be output to
-   =meuh/bin/en.sh= by:
-
-    #+begin_src sh
-    cd meuh
-    qmake 
-    make env
-    #+end_src
-   
-   This file can then be used to =source= definitions:
-
-   #+begin_src sh
-   . meuh/bin/env.sh
-   #+end_src
    
   
