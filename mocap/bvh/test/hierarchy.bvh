@@ -1,0 +1,184 @@
+HIERARCHY
+ROOT hip
+{
+	OFFSET 0.00000 0.00000 0.00000
+	CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation 
+	JOINT lhipjoint
+	{
+		OFFSET 0 0 0
+		CHANNELS 3 Zrotation Yrotation Xrotation
+		JOINT lfemur
+		{
+			OFFSET 1.62067 -1.77917 0.70989
+			CHANNELS 3 Zrotation Yrotation Xrotation
+			JOINT ltibia
+			{
+				OFFSET 2.34532 -6.44371 0.00000
+				CHANNELS 3 Zrotation Yrotation Xrotation
+				JOINT lfoot
+				{
+					OFFSET 2.74224 -7.53425 0.00000
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT ltoes
+					{
+						OFFSET 0.17032 -0.46794 2.08086
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						End Site
+						{
+							OFFSET 0.00000 -0.00000 1.07476
+						}
+					}
+				}
+			}
+		}
+	}
+	JOINT rhipjoint
+	{
+		OFFSET 0 0 0
+		CHANNELS 3 Zrotation Yrotation Xrotation
+		JOINT rfemur
+		{
+			OFFSET -1.55811 -1.77917 0.70989
+			CHANNELS 3 Zrotation Yrotation Xrotation
+			JOINT rtibia
+			{
+				OFFSET -2.33243 -6.40830 0.00000
+				CHANNELS 3 Zrotation Yrotation Xrotation
+				JOINT rfoot
+				{
+					OFFSET -2.78798 -7.65993 0.00000
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT rtoes
+					{
+						OFFSET -0.22707 -0.62388 2.04059
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						End Site
+						{
+							OFFSET -0.00000 -0.00000 1.07030
+						}
+					}
+				}
+			}
+		}
+	}
+	JOINT lowerback
+	{
+		OFFSET 0 0 0
+		CHANNELS 3 Zrotation Yrotation Xrotation
+		JOINT upperback
+		{
+			OFFSET 0.02203 1.91565 0.07161
+			CHANNELS 3 Zrotation Yrotation Xrotation
+			JOINT thorax
+			{
+				OFFSET 0.01740 1.90525 0.11636
+				CHANNELS 3 Zrotation Yrotation Xrotation
+				JOINT lowerneck
+				{
+					OFFSET 0 0 0
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT upperneck
+					{
+						OFFSET -0.10841 1.83566 0.05067
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						JOINT head
+						{
+							OFFSET 0.06601 1.74760 -0.50505
+							CHANNELS 3 Zrotation Yrotation Xrotation
+							End Site
+							{
+								OFFSET 0.03102 1.85215 -0.17697
+							}
+						}
+					}
+				}
+				JOINT lclavicle
+				{
+					OFFSET 0 0 0
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT lhumerus
+					{
+						OFFSET 2.87059 1.35470 0.16111
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						JOINT lradius
+						{
+							OFFSET 5.43592 -0.00000 0.00000
+							CHANNELS 3 Zrotation Yrotation Xrotation
+							JOINT lwrist
+							{
+								OFFSET 3.25460 -0.00000 0.00000
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT lhand
+								{
+									OFFSET 0 0 0
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									JOINT lfingers
+									{
+										OFFSET 0.49824 -0.00000 0.00000
+										CHANNELS 3 Zrotation Yrotation Xrotation
+										End Site
+										{
+											OFFSET 0.40170 -0.00000 0.00000
+										}
+									}
+								}
+								JOINT lthumb
+								{
+									OFFSET 0 0 0
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									End Site
+									{
+										OFFSET 0.40783 -0.00000 0.40783
+									}
+								}
+							}
+						}
+					}
+				}
+				JOINT rclavicle
+				{
+					OFFSET 0 0 0
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT rhumerus
+					{
+						OFFSET -2.86643 1.23488 0.45957
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						JOINT rradius
+						{
+							OFFSET -5.33830 -0.00000 0.00000
+							CHANNELS 3 Zrotation Yrotation Xrotation
+							JOINT rwrist
+							{
+								OFFSET -3.23148 -0.00000 0.00000
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT rhand
+								{
+									OFFSET 0 0 0
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									JOINT rfingers
+									{
+										OFFSET -0.46364 -0.00000 0.00000
+										CHANNELS 3 Zrotation Yrotation Xrotation
+										End Site
+										{
+											OFFSET -0.37380 -0.00000 0.00000
+										}
+									}
+								}
+								JOINT rthumb
+								{
+									OFFSET 0 0 0
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									End Site
+									{
+										OFFSET -0.37951 -0.00000 0.37951
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

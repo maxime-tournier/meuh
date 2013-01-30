@@ -1,0 +1,24 @@
+TODO !
+
+* Contacts
+  primitive: donne le pullback
+  
+  il faut une map primitive / dof + pullback dans tool::contact
+
+* Picking
+  
+
+* Code 
+  - cleanup phys/skel, and symbolic links
+
+* Packaging
+
+  - create a config.pro.example file
+    
+* TODO Documentation
+   
+  :-) 
+
+* TODO Features
+
+  

@@ -1,0 +1,170 @@
+#ifndef GL_VBO_H
+#define GL_VBO_H
+
+#include <gl/gl.h>
+
+#include <functional>
+#include <list>
+#include <vector>
+
+#include <core/foreach.h>
+#include <core/range/stl.h>
+
+#include <gl/error.h>
+#include <gl/buffer_object.h>
+#include <core/tuple/offset.h>
+#include <cassert>
+
+
+namespace gl {
+  
+ 
+
+
+  class vbo : public buffer_object {
+  public:
+    static const GLenum target = GL_ARRAY_BUFFER_ARB;
+  
+    enum tag {
+      vertex,
+      color,
+      normal
+    };
+
+    static GLenum client_state(tag t);
+    
+    vbo(GLenum usage = buffer_object::default_usage);
+
+    void bind();
+    void unbind();
+
+    virtual void enable() = 0;
+    virtual void disable() = 0;
+
+    virtual void send() = 0;
+    virtual bool sent() const = 0;
+    
+    virtual void draw(GLenum mode) = 0;
+    
+  };
+
+ 
+
+  template<class ... Args>
+  class array : public vbo {
+
+    typedef std::function< void() > callback;
+    std::list<callback> enable_, disable_;
+
+    bool sent_;
+    
+    template<class Type>
+    callback enable(vbo::tag t, GLvoid* offset) {
+      auto cs = client_state;
+
+      switch( t ) {
+      case vbo::vertex: return 
+	  [&]() { 
+	  glVertexPointer( gl::size<Type>(), gl::type<Type>(), sizeof(array::chunk), offset);
+	  glEnableClientState( cs(t) );
+	};
+      case vbo::color: return 
+	  [&]() { 
+	  glColorPointer( gl::size<Type>(), gl::type<Type>(), sizeof(array::chunk), offset);
+	  glEnableClientState( cs(t) );
+	};
+      case vbo::normal: return
+	  [&]() { 
+	  assert( gl::size<Type>() == 3 );
+	  glNormalPointer(gl::type<Type>(), sizeof(array::chunk), offset);
+	  glEnableClientState( cs(t) );
+	};
+      }
+      throw error("bad tag");
+    }
+
+    callback disable(vbo::tag t) {
+      auto cs = client_state;
+      return [&]() { glDisableClientState( cs(t) ); };
+    }
+    
+  
+
+  public:
+    array(GLenum usage = buffer_object::default_usage) 
+      : vbo(usage), 
+	sent_(false) {}
+
+    bool sent() const { return sent_; }
+
+    typedef std::tuple<Args...>  chunk;
+    // typedef std::vector<chunk > data_type;
+    typedef Eigen::Array< chunk, Eigen::Dynamic, 1> data_type;
+    data_type data;
+    
+    template<int I>
+    array& tag( vbo::tag t ) {
+      typedef typename std::tuple_element<I, chunk>::type type;
+      GLvoid* offset = (GLvoid*)core::tuple::offset<I, Args...>::value;
+
+      enable_.push_back( enable<type>(t, offset ) );
+      disable_.push_back( disable(t) );
+      return *this;
+    }
+    
+    void enable() { bind(); send(); core::foreach( core::all(enable_),
+					   [](callback f) { f(); } ); }
+    void disable() { core::foreach( core::all(disable_),
+				    [](callback f) { f(); } ); unbind(); }
+    
+    void draw(GLenum mode) {
+      enable();
+      glDrawArrays(mode, 0, data.size());
+      disable();
+    }
+
+    void send() {
+      if(!sent() ) {
+	if( data.rows() == 0 ) throw error("no data !");
+	
+	bind();
+	glBufferDataARB( target,
+			 data.size() * sizeof( chunk ),
+			 &data(0),
+			 buffer_object::usage() );
+	sent_ = true;
+      }
+    }
+    
+    // TODO move outside? 
+    template<int I> struct accessor {
+      data_type& data;
+
+      typename std::tuple_element<I, chunk>::type& operator()(unsigned int i) const {
+	return std::get<I>(data(i));
+      }
+    };
+
+    template<int I> struct const_accessor {
+      const data_type& data;
+      
+      const typename std::tuple_element<I, chunk>::type& operator()(unsigned int i) const {
+	return std::get<I>(data(i));
+      }
+      
+    };
+
+    
+    template<int I>
+    accessor<I> access() { return {data}; }
+
+    template<int I>
+    const_accessor<I> access() const { return {data}; }
+    
+  };
+
+  
+}
+
+
+#endif

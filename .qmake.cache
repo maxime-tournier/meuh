@@ -1,0 +1,4 @@
+
+include( build/deps.pro )
+include( build/config.pro )
+

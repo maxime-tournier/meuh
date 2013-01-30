@@ -1,0 +1,69 @@
+MEUH
+
+* Download
+
+  #+begin_src sh
+  sudo apt-get install git qt4-qmake
+  git clone git://gitorious.org/meuh/meuh.git
+  #+end_src
+  
+* Dependencies
+  
+  The following command should take care of build-deps automagically
+  on the latest Ubuntu:
+  #+begin_src sh
+  cd meuh
+  qmake
+  make deps
+  #+end_src
+  
+  If you only need the runtime depenendencies, run =make deps= instead.
+
+  A [[http://www.mosek.com/][MOSEK]] plugin can be optionally compiled (see plugin/mosek/ )
+  
+* Customize build
+  
+  Have a look at the custom build file =build/custom.pro.example=, and
+  save overrides in =meuh/build/custom.pro=.
+
+  Also, edit =app/app.pro= to select which sub-projects to build.
+	
+* Build
+
+  This should do it:
+  
+  #+begin_src sh
+  cd meuh
+  qmake
+  make -k
+  #+end_src
+
+  libs end up in =./lib=, binaries in =./bin=
+  
+* Run 
+
+The =master= branch will only build the =balance= sub-project, which
+implements PGA-based character control.
+
+Use mouse to control camera, shit+mouse to interact with the virtual
+character, press =r= to reset simulation.
+
+** Environment variables
+
+*** TODO does this still work ?
+   The relevant environment variables can be output to
+   =meuh/bin/en.sh= by:
+
+    #+begin_src sh
+    cd meuh
+    qmake 
+    make env
+    #+end_src
+   
+   This file can then be used to =source= definitions:
+
+   #+begin_src sh
+   . meuh/bin/env.sh
+   #+end_src
+   
+  

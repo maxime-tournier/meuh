@@ -1,0 +1,5 @@
+
+
+SUBDIRS += test
+
+SUBDIRS += app 

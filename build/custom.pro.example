@@ -1,0 +1,27 @@
+
+# mosek plug-in
+# MOSEK_PATH=/opt/mosek/6/tools/platform/linux64x86
+# CONFIG += mosek
+
+# use openmp
+# CONFIG += openmp
+
+# builds some plugins
+# CONFIG += opencv kinect
+
+# easy on compilation
+# QMAKE_CXX = nice ionice -c3 g++-4.6
+
+# arch specific flags
+# QMAKE_CXXFLAGS += -march=corei7 
+# QMAKE_LFLAGS += -march=corei7
+
+# verbose compilation
+# CONFIG -= silent
+
+# enable debug build
+# CONFIG += debug
+
+
+
+

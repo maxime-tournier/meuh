@@ -1,0 +1,11 @@
+ begin
+     id 2 
+     name lfemur
+     direction 0.34202 -0.939693 0  
+     length 5.95383  
+     axis 0 0 20  XYZ
+    dof rx ry rz
+    limits (-160.0 20.0)
+           (-70.0 70.0)
+           (-60.0 70.0)
+  end

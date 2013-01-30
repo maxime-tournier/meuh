@@ -1,0 +1,25 @@
+Examples
+
+Some examples are available in the =meuh/gui= directory. Simply run
+=qmake= with the corresponding =.pro= file, then =make= should build
+the example in the =meuh/app= directory.
+
+* Screw 
+
+  Demonstrates screw motion interpolation. This example shows a basic
+  example of Lie group computation to perform tangent linear
+  interpolation.
+  
+* Curve 
+  
+  This example shows how to create an interpolation curve for rigid
+  transforms, based on quaternion splines by Kim97 (TODO check
+  reference).
+  
+* Clip
+  
+  Loads and displays a BVH motion capture sequence.
+
+* TODO Control
+
+  

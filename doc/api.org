@@ -1,0 +1,69 @@
+API
+
+The library is subdivided in several /modules/, listed below.
+
+
+* TODO core
+
+  Depends on: none
+
+  basic, low-level functions/data structures: trees, (lambda-based)
+  iteration, IO, exceptions.
+
+* TODO math
+
+  Depends on: core
+
+  (differential) geometry/optimization framework. 
+  
+** Geometry
+
+   A given mathematical structure on a set is implemented by a /trait/
+   class.
+
+*** Euclidean Geometry
+
+*** Lie Groups
+
+** Differential Geometry
+
+** Optimization 
+  
+
+* TODO mocap 
+
+  Depends on: core, math
+
+  Primitives for reading BVH files. The =.bvh= parser uses
+  =boost::spirit=.
+
+* TODO gl
+
+  Depends on: core, math, (mocap)
+
+  Everything graphics related. Wraps most OpenGL primitives.
+
+* TODO geo
+
+  Depends on: core, math
+
+  mesh processing: .obj loader, primives.
+
+* TODO sparse
+
+  Depends on: core, math
+
+  Sparse containers (=std::map=-based) used by =phys/control=.
+
+* TODO phys
+
+  Depends on: core, math, sparse, (mocap)
+
+  General structures/algorithms for constrained system solving, plus
+  dedicated primitives for skeleton-based animation.
+
+* TODO control 
+
+  Depends on: core, math, sparse, phys
+
+  Control solvers.

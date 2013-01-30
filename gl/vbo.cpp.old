@@ -1,0 +1,29 @@
+#include "vbo.h"
+
+
+namespace gl {
+
+
+  vbo::vbo(GLenum usage) : buffer_object(usage) { }
+
+  GLenum vbo::client_state(tag t)     {
+    switch(t) {
+    case vertex: return GL_VERTEX_ARRAY;
+    case color: return GL_COLOR_ARRAY;
+    case normal: return GL_NORMAL_ARRAY;
+    }
+    throw error("bad tag");
+  }
+
+  void vbo::bind(){
+    create();
+    glBindBufferARB(target, handle());
+  }
+
+  void vbo::unbind() {
+    glBindBufferARB(target, buffer_object::none );
+  }
+
+
+  
+}
