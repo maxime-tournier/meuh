@@ -1,8 +1,3 @@
-* Download
-
-: sudo apt-get install git qt4-qmake
-:  git clone git://gitorious.org/meuh/meuh.git
-  
 * Dependencies
   
   The following command should take care of build-deps automagically
