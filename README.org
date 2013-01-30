@@ -1,19 +1,16 @@
 * Download
 
-  #+begin_src sh
-  sudo apt-get install git qt4-qmake
-  git clone git://gitorious.org/meuh/meuh.git
-  #+end_src
+: sudo apt-get install git qt4-qmake
+:  git clone git://gitorious.org/meuh/meuh.git
   
 * Dependencies
   
   The following command should take care of build-deps automagically
-  on the latest Ubuntu:
-  #+begin_src sh
-  cd meuh
-  qmake
-  make deps
-  #+end_src
+  on the latest Ubuntu/Debian:
+
+:  cd meuh
+:  qmake
+:  make deps
   
   If you only need the runtime depenendencies, run =make deps= instead.
 
@@ -30,11 +27,9 @@
 
   This should do it:
   
-  #+begin_src sh
-  cd meuh
-  qmake
-  make -k
-  #+end_src
+:  cd meuh
+:  qmake
+:  make -k
 
   libs end up in =./lib=, binaries in =./bin=
   
@@ -50,8 +45,9 @@ root of the repository, and add =$MEUH_PATH/lib= to =LD_LIBRARY_PATH=,
 : export MEUH_PATH=/the/path/to/meuh
 : export LD_LIBRARY_PATH=$MEUH_PATH/lib:$LD_LIBRARY_PATH
 
-Use mouse to control camera, shit+mouse to interact with the virtual
-character, press =r= to reset simulation.
+Run =bin/balance=, then use mouse to control camera, shit+mouse to
+interact with the virtual character, press =r= to reset simulation.
 
+Have fun :-)
    
   
